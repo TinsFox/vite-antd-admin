@@ -1,9 +1,24 @@
 import React, { FC } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 interface DashbordProps {}
 
-const Dashbord: FC<DashbordProps> = () => {
-  return <div>Dashbord</div>;
+const Dashboard: FC<DashbordProps> = () => {
+  return (
+    <div>
+      <h1>Bookkeeper</h1>
+      <nav
+        style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem",
+        }}
+      >
+        <Link to="/invoices">Invoices</Link>
+        {""} | <Link to="/expenses">Expenses</Link>
+      </nav>
+      <Outlet />
+    </div>
+  );
 };
 
-export default Dashbord;
+export default Dashboard;
