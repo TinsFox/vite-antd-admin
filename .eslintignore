@@ -1,0 +1,9 @@
+node_modules/
+build/
+dist/
+**/*.min.js
+**/*-min.js
+**/*.bundle.js
+vite.config.ts
+.eslintrc.js
+tsconfig.json
