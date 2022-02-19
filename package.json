@@ -17,10 +17,7 @@
     "*": [
       "prettier --write --ignore-unknown"
     ],
-    "src/*/**/*.ts": [
-      "eslint --ext .ts"
-    ],
-    "packages/**/*.d.ts": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --ext .ts"
     ]
   },
