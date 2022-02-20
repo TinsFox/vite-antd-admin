@@ -1,47 +1,32 @@
-import React, { useMemo } from "react";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  Outlet,
-  HashRouter,
-} from "react-router-dom";
-export { default as routes } from "./routes";
+import React, { useCallback, useMemo } from 'react';
+import { Route, Routes, Outlet } from 'react-router-dom';
+export { default as routes } from './routes';
 
 type RouterManagerProps = {
-  mode?: "hash" | "history";
+  mode?: 'hash' | 'history';
   routeConfig: RouteConfig[];
 };
 
-export const RouterManager = React.memo<RouterManagerProps>(
-  ({ mode, routeConfig }) => {
-    const getRoutes = (routes: RouteConfig[]) => {
-      return routes.map((route) => (
-        <Route
-          key={route.path}
-          path={route.path}
-          element={
-            <>
-              {route.page}
-              <Outlet />
-            </>
-          }
-        >
-          {Array.isArray(route.children) && getRoutes(route.children)}
-        </Route>
-      ));
-    };
+export const RouterManager = React.memo<RouterManagerProps>(({ routeConfig }) => {
+  const getRoutes = useCallback((routes: RouteConfig[]) => {
+    return routes.map((route) => (
+      <Route
+        key={route.path}
+        path={route.path}
+        element={
+          <>
+            {route.page}
+            <Outlet />
+          </>
+        }
+      >
+        {Array.isArray(route.children) && getRoutes(route.children)}
+      </Route>
+    ));
+  }, []);
 
-    const routes = useMemo(() => {
-      return getRoutes(routeConfig);
-    }, [routeConfig]);
-
-    const Router = mode === "hash" ? HashRouter : BrowserRouter;
-
-    return (
-      <Router>
-        <Routes>{routes}</Routes>
-      </Router>
-    );
-  }
-);
+  const routes = useMemo(() => {
+    return getRoutes(routeConfig);
+  }, [getRoutes, routeConfig]);
+  return <Routes>{routes}</Routes>;
+});
