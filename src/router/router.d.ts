@@ -1,6 +1,12 @@
+declare type PageMeta = {
+  title: string;
+  icon?: React.ReactNode;
+  hidden?: boolean;
+};
+
 declare type RouteConfig = {
   path: string;
   page: JSX.Element;
-  title: string;
   children?: RouteConfig[];
+  meta: PageMeta;
 };
