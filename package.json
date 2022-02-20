@@ -7,7 +7,8 @@
     "build": "tsc && vite build",
     "dev": "vite",
     "preinstall": "npx only-allow pnpm",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "plop": "plop"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --concurrent false",
@@ -55,6 +56,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "picocolors": "^1.0.0",
+    "plop": "^3.0.5",
     "prettier": "^2.5.1",
     "simple-git-hooks": "^2.7.0",
     "ts-node": "^10.5.0",
