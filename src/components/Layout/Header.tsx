@@ -7,7 +7,7 @@ export type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> = ({ icon, title }) => {
   return (
-    <Layout.Header>
+    <Layout.Header style={{ background: '#fff' }}>
       <Row justify="space-between" align="middle">
         <Col>
           <Space size={12} direction="horizontal">

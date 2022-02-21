@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 export const SideMenu: React.FC = () => {
   const getMenuElement = useCallback((routeConfig: RouteConfig[], parentRoutePath?: string) => {
-    // TODO: bug 三级导航时组件重复渲染
     return routeConfig.map((route) => {
       const routePath = (parentRoutePath ?? '') + `/${route.path.replace(/^\//g, '')}`;
       if (route.children?.length) {

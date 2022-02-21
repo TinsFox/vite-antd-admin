@@ -11,17 +11,31 @@ const routes: RouteConfig[] = [
   },
   {
     path: '/login',
-    page: <Login />,
     meta: {
       title: '登录',
     },
     children: [
       {
         path: '2',
-        page: <Home />,
         meta: {
           title: '二级导航',
         },
+        children: [
+          {
+            path: '23',
+            page: <Login />,
+            meta: {
+              title: '三级导航',
+            },
+          },
+          {
+            path: '232',
+            page: <Login />,
+            meta: {
+              title: '三级导航2',
+            },
+          },
+        ],
       },
     ],
   },
