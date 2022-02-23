@@ -19,5 +19,5 @@ export function useRoute() {
     () => routeTree?.find(({ path }) => location.pathname === path),
     [location, routeTree],
   );
-  return { routeTree, route };
+  return { routeTree, route, path: location.pathname };
 }

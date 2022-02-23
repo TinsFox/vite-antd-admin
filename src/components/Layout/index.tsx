@@ -5,6 +5,8 @@ import { Header as PageHeader } from './Header';
 import { SideMenu } from './SideMenu';
 import { useRoute } from '@/hooks/useRoute';
 import { useTitle } from 'ahooks';
+import { ErrorBoundary } from '../ErrorBoundary';
+import { ServerError } from '../feedback';
 
 const { Sider, Footer, Content } = Layout;
 
@@ -24,7 +26,9 @@ const PageLayout: React.FC = () => {
         </Sider>
         <Layout style={{ justifyContent: 'space-between' }}>
           <Content>
-            <PageRouter routeConfig={routes} />
+            <ErrorBoundary fallback={<ServerError />}>
+              <PageRouter routeConfig={routes} />
+            </ErrorBoundary>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Power by React</Footer>
         </Layout>

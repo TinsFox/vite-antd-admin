@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom';
 import PageLayout from '@/components/Layout';
-import { BrowserRouter } from 'react-router-dom';
+import { Root } from './components/Root';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Root routeMode="history">
     <PageLayout />
-  </BrowserRouter>,
+  </Root>,
   document.getElementById('root'),
 );
