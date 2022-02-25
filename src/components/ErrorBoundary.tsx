@@ -1,5 +1,4 @@
 import React from 'react';
-import {} from 'react-router';
 
 export class ErrorBoundary extends React.Component<
   { fallback?: React.ReactNode; children: React.ReactNode },
