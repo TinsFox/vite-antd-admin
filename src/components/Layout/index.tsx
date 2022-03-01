@@ -16,10 +16,7 @@ const PageLayout: React.FC = () => {
 
   return (
     <Layout style={{ height: '100vh' }}>
-      <PageHeader
-        title="管理后台"
-        icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-      />
+      <PageHeader title="管理后台" icon="/static/images/favicon.svg" />
       <Layout>
         <Sider style={{ background: '#fff' }}>
           <SideMenu />
