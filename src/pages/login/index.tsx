@@ -1,75 +1,62 @@
-import { PageContainer } from '@/components/PageContainer';
-import { Button, Card, Col, Drawer, Form, Input, InputNumber, Row, Space, Typography } from 'antd';
+import { Button, Form, Input } from 'antd';
 import React, { useState } from 'react';
+import styles from './index.module.less';
+import logo from '/static/images/logo.svg';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-const AwardForm: React.FC<{
-  visible: boolean;
-  item?: Record<string, any>;
-  onCancel: () => void;
-  onSuccess?: (values: Record<string, any>) => void;
-}> = ({ item, visible, onCancel, onSuccess }) => {
-  return (
-    <Drawer title="奖品设置" visible={visible} onClose={onCancel} destroyOnClose>
-      <Form onFinish={onSuccess} initialValues={item}>
-        <Form.Item label="奖品名称" name="name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="奖品数量" name="stock">
-          <InputNumber />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            保存
-          </Button>
-        </Form.Item>
-      </Form>
-    </Drawer>
-  );
-};
+/* 登陆表单 */
+interface ILogin {
+  email: string;
+  password: string;
+}
 
 const Login: React.FC = () => {
-  const [state, setState] = useState<Record<string, any>>({});
-  const [editingItem, setEditingItem] = useState<[string | number, Record<string, any>]>();
-  const [index, setIndex] = useState<string | number>('');
+  const [form, setForm] = useState<ILogin>();
+  const onSubmitForm = (values: ILogin) => {
+    setForm(values);
+    console.log('Received values of form: ', values);
+  };
+  const renderLabel = (label: string) => <div className={styles.label}>{label}</div>;
   return (
-    <PageContainer>
-      <AwardForm
-        item={editingItem}
-        visible={!!editingItem}
-        onCancel={() => {
-          setEditingItem(undefined);
-        }}
-        onSuccess={(v) => {
-          setState((prev) => ({ ...prev, [index]: v }));
-          setEditingItem(undefined);
-        }}
-      />
-      <Row gutter={[16, 16]} style={{ width: 750, marginLeft: 30 }}>
-        {Array.from({ length: 9 }, (_, x) => x).map((idx) => (
-          <Col span={8} key={idx.toString()}>
-            <Card
-              style={{
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                setEditingItem(state[idx] ?? {});
-                setIndex(idx);
-              }}
+    <div className={styles.login}>
+      <div className={styles['login-box']}>
+        <div>
+          <img src={logo} className={styles.logo} />
+          <div className={styles.title}>Vite Antd Admin</div>
+          <div className={styles.tip}>Login in to Vite Antd Admin</div>
+        </div>
+        <div>
+          <Form
+            name="normal_login"
+            initialValues={form}
+            className={styles['login-form']}
+            onFinish={onSubmitForm}
+            layout="vertical"
+          >
+            <Form.Item
+              label={renderLabel('EMAIL')}
+              name="email"
+              style={{ marginBottom: '10px' }}
+              rules={[{ message: 'Please input your Email!' }]}
             >
-              {!state[idx] ? (
-                <span>设置奖品</span>
-              ) : (
-                <Space direction="vertical">
-                  <span>{state[idx].name}</span>
-                  <span>{state[idx].stock}</span>
-                </Space>
-              )}
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      <Typography.Paragraph>{JSON.stringify(Object.values(state))}</Typography.Paragraph>
-    </PageContainer>
+              <Input prefix={<UserOutlined />} placeholder="Email address" />
+            </Form.Item>
+            <Form.Item
+              label={renderLabel('PASSWORD')}
+              name="password"
+              rules={[{ message: 'Please input your Password!' }]}
+            >
+              <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className={styles['login-form-button']}>
+                Log in
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </div>
+    </div>
   );
 };
 

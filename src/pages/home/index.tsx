@@ -5,7 +5,7 @@ import React from 'react';
 const Home: React.FC = () => {
   return (
     <PageContainer>
-      <>{{ a: 1 }}</>
+      <div>123</div>
     </PageContainer>
   );
 };

@@ -12,11 +12,11 @@ const { Sider, Footer, Content } = Layout;
 
 const PageLayout: React.FC = () => {
   const { route } = useRoute();
-  useTitle(route?.meta.title ?? '管理后台');
+  useTitle(route?.meta.title ?? 'Vite Antd Admin');
 
   return (
     <Layout style={{ height: '100vh' }}>
-      <PageHeader title="管理后台" icon="/static/images/favicon.svg" />
+      <PageHeader title="Vite Antd Admin" icon="/static/images/favicon.svg" />
       <Layout>
         <Sider style={{ background: '#fff' }}>
           <SideMenu />
@@ -27,7 +27,7 @@ const PageLayout: React.FC = () => {
               <PageRouter routeConfig={routes} />
             </ErrorBoundary>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Power by React</Footer>
+          <Footer style={{ textAlign: 'center' }}>Power by Vite Antd Admin</Footer>
         </Layout>
       </Layout>
     </Layout>
