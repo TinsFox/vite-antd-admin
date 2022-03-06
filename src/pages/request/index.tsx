@@ -5,7 +5,7 @@ export default function () {
   const [get, setGet] = useState<string>('');
   useMount(() => {
     user().then((res) => {
-      console.log('user', res);
+      console.log('user', res.data.name);
       setGet(JSON.stringify(res));
     });
   });
