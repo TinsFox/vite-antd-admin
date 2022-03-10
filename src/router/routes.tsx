@@ -1,38 +1,36 @@
+import BasicLayout from '@/components/Layout';
+import BlankLayout from '@/components/Layout/BlankLayout';
 import Home from '../pages/home';
 import Login from '../pages/login';
 
 const routes: RouteConfig[] = [
   {
-    path: '/home',
-    page: <Home />,
-    meta: {
-      title: '首页',
-    },
-  },
-  {
-    path: '/login',
-    meta: {
-      title: '登录',
-    },
+    path: '/',
+    page: <BlankLayout />,
     children: [
       {
-        path: '2',
+        path: '/login',
+        page: <Login />,
         meta: {
-          title: '二级导航',
+          title: '登陆',
         },
+      },
+      {
+        path: '/',
+        page: <BasicLayout />,
         children: [
           {
-            path: '23',
-            page: <Login />,
+            path: 'dashboard',
+            page: <Home />,
             meta: {
               title: '三级导航',
             },
           },
           {
-            path: '232',
+            path: 'table',
             page: <Login />,
             meta: {
-              title: '三级导航2',
+              title: 'table',
             },
           },
         ],

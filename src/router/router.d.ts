@@ -14,5 +14,5 @@ declare type RouteConfig = {
   page?: JSX.Element;
   /* 嵌套路由， */
   children?: RouteConfig[];
-  meta: PageMeta;
+  meta?: PageMeta;
 };

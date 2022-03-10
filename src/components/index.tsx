@@ -3,7 +3,7 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 const Store = React.createContext({});
 
-export const Root: React.FC<{
+export const RootElement: React.FC<{
   routeMode?: 'hash' | 'history';
   theme?: 'dark' | 'light';
   children: React.ReactNode;

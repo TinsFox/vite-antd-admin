@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom';
-import PageLayout from '@/components/Layout';
-import { Root } from './components/Root';
+import { RootElement } from './components';
+import { PageRouter as Router, routes } from './router';
 
 ReactDOM.render(
-  <Root routeMode="history">
-    <PageLayout />
-  </Root>,
+  <RootElement routeMode="history">
+    <Router routeConfig={routes} />
+  </RootElement>,
   document.getElementById('root'),
 );

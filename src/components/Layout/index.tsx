@@ -7,12 +7,14 @@ import { useRoute } from '@/hooks/useRoute';
 import { useTitle } from 'ahooks';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { ServerError } from '../feedback';
+import { Outlet } from 'react-router';
 
 const { Sider, Footer, Content } = Layout;
 
 const PageLayout: React.FC = () => {
   const { route } = useRoute();
-  useTitle(route?.meta.title ?? 'Vite Antd Admin');
+  useTitle(route?.meta?.title ?? 'Vite Antd Admin');
+  console.log('BasicLayout');
 
   return (
     <Layout style={{ height: '100vh' }}>
@@ -23,9 +25,10 @@ const PageLayout: React.FC = () => {
         </Sider>
         <Layout style={{ justifyContent: 'space-between' }}>
           <Content>
-            <ErrorBoundary fallback={<ServerError />}>
-              <PageRouter routeConfig={routes} />
-            </ErrorBoundary>
+            {/* <ErrorBoundary fallback={<ServerError />}> */}
+            {/* <PageRouter routeConfig={routes} /> */}
+            <Outlet />
+            {/* </ErrorBoundary> */}
           </Content>
           <Footer style={{ textAlign: 'center' }}>Power by Vite Antd Admin</Footer>
         </Layout>

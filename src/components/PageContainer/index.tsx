@@ -15,7 +15,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({ loading, children 
         breadcrumb={
           <Breadcrumb>
             {routeTree?.map((item, idx) => {
-              return <Breadcrumb.Item key={idx.toString()}>{item.meta.title}</Breadcrumb.Item>;
+              return <Breadcrumb.Item key={idx.toString()}>{item?.meta?.title}</Breadcrumb.Item>;
             })}
           </Breadcrumb>
         }
